@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:deneb_v2/helpers/planets_helper.dart';
 import 'package:deneb_v2/models/planet_model.dart';
 import 'package:deneb_v2/screens/home.dart';
+import 'package:deneb_v2/screens/home_screen.dart';
 
 class Add_planet extends StatefulWidget {
   Add_planet({Key? key}) : super(key: key);
@@ -35,8 +36,8 @@ class _AddpplanetState extends State<Add_planet> {
           ),
           iconSize: 30,
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const HomeScreen2()));
           },
         ),
         title: Text(
