@@ -21,8 +21,6 @@ class _AddpplanetState extends State<Add_planet> {
   final textControllerDistance = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    int ratingvalue = 5;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
