@@ -1,4 +1,5 @@
 import 'package:deneb_v2/screens/add_planet_screen.dart';
+import 'package:deneb_v2/screens/planet_info.dart';
 import 'package:flutter/material.dart';
 import 'screens/home.dart';
 import 'screens/home_screen.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Color(0xFF443E64),
       ),
-      home: HomeScreen2(),
+      home: Planetinfo(),
     );
   }
 }

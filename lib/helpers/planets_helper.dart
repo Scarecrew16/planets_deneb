@@ -52,6 +52,16 @@ class PlanetHelper {
     return planetList;
   }
 
+  Future<List<Planet>> getPlanetinfo(int id) async {
+    Database db = await instance.database;
+    var planetquery =
+        await db.query('planets', where: 'id = ?', whereArgs: [id]);
+    List<Planet> planetList = planetquery.isNotEmpty
+        ? planetquery.map((e) => Planet.fromMap(e)).toList()
+        : [];
+    return planetList;
+  }
+
   Future<int> addPlanet(Planet planet) async {
     //esperar hasta la conección
     Database db = await instance.database;
