@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "723914197067",
+    "firebase_url": "https://scw-flutter-default-rtdb.firebaseio.com",
+    "project_id": "scw-flutter",
+    "storage_bucket": "scw-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723914197067:android:ec3e64b3c02bde5b0325ce",
+        "android_client_info": {
+          "package_name": "com.example.deneb_v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723914197067-7su58cqah2vmutpv8384lr3192h3js2p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDxN8NIbwSgKMguB8On7Wbfya2MMoFItk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723914197067-7su58cqah2vmutpv8384lr3192h3js2p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "723914197067-66kt21irgl9k2vhd6e44bb66ijaed98k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.denebV2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
