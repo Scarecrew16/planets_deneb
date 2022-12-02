@@ -24,6 +24,11 @@ class AppRoutes {
         icon: Icons.circle_sharp,
         name: 'Holes',
         screen: HoleScreen()),
+    MenuOption(
+        route: 'travel',
+        icon: Icons.place_sharp,
+        name: 'Travels',
+        screen: TravelScreen()),
     //MenuOption(route: 'home', icon: Icons.home, name: 'Home', screen: const HomeScreen()),
   ];
 
