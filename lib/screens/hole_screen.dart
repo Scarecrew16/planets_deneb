@@ -1,17 +1,16 @@
 import 'package:deneb_v2/screens/add_planet_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:deneb_v2/PlanetCards/falcon.dart';
-import 'package:deneb_v2/PlanetCards/pillar.dart';
+import 'package:deneb_v2/PlanetCards/centaurus.dart';
 import 'package:deneb_v2/screens/home_screen.dart';
 
-class ShipScreen extends StatefulWidget {
-  const ShipScreen({Key? key}) : super(key: key);
+class HoleScreen extends StatefulWidget {
+  const HoleScreen({Key? key}) : super(key: key);
 
   @override
-  _ShipScreenState createState() => _ShipScreenState();
+  _HoleScreenState createState() => _HoleScreenState();
 }
 
-class _ShipScreenState extends State<ShipScreen> {
+class _HoleScreenState extends State<HoleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +47,7 @@ class _ShipScreenState extends State<ShipScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
                 child: Text(
-                  'Starships',
+                  'Black Holes',
                   style: TextStyle(
                     color: Color.fromARGB(255, 122, 119, 119),
                     fontSize: 30,
@@ -61,7 +60,7 @@ class _ShipScreenState extends State<ShipScreen> {
               height: 485,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: <Widget>[FalconCard(), PillarCard()],
+                children: <Widget>[CentaurusCard()],
               ),
             ),
           ],

@@ -19,6 +19,8 @@ class _AddpplanetState extends State<Add_planet> {
   final textControllerNature = TextEditingController();
   final textControllerSize = TextEditingController();
   final textControllerDistance = TextEditingController();
+  final textControllerRotation = TextEditingController();
+  final textControllerTranslation = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,6 +83,16 @@ class _AddpplanetState extends State<Add_planet> {
                 decoration: const InputDecoration(
                     icon: Icon(Icons.settings_ethernet_outlined),
                     labelText: "Distance from the earth")),
+            TextFormField(
+                controller: textControllerRotation,
+                decoration: const InputDecoration(
+                    icon: Icon(Icons.cyclone_outlined),
+                    labelText: "Rotation Time")),
+            TextFormField(
+                controller: textControllerTranslation,
+                decoration: const InputDecoration(
+                    icon: Icon(Icons.hourglass_empty_outlined),
+                    labelText: "Translation time")),
             SizedBox(
               height: 20,
             ),
@@ -104,7 +116,9 @@ class _AddpplanetState extends State<Add_planet> {
                       type: textControllerType.text,
                       nature: textControllerNature.text,
                       size: textControllerSize.text,
-                      distance: textControllerDistance.text));
+                      distance: textControllerDistance.text,
+                      rotation: textControllerRotation.text,
+                      translation: textControllerTranslation.text));
                   setState(() {
                     textControllerName.clear();
                     textControllerImage.clear();
@@ -113,6 +127,8 @@ class _AddpplanetState extends State<Add_planet> {
                     textControllerNature.clear();
                     textControllerSize.clear();
                     textControllerDistance.clear();
+                    textControllerRotation.clear();
+                    textControllerTranslation.clear();
                   });
                 }),
             SizedBox(height: 5),

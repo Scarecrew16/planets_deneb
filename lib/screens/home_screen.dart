@@ -1,4 +1,5 @@
 import 'package:deneb_v2/screens/add_planet_screen.dart';
+import 'package:deneb_v2/screens/options.dart';
 import 'package:flutter/material.dart';
 import 'package:deneb_v2/helpers/planets_helper.dart';
 import 'package:deneb_v2/models/planet_model.dart';
@@ -23,10 +24,10 @@ class _HomeScreen2State extends State<HomeScreen2> {
           backgroundColor: Color.fromARGB(255, 94, 93, 93),
           actions: [
             IconButton(
-              icon: const Icon(Icons.add),
+              icon: const Icon(Icons.settings),
               onPressed: () {
                 final route =
-                    MaterialPageRoute(builder: (context) => Add_planet());
+                    MaterialPageRoute(builder: (context) => Options());
                 Navigator.push(context, route);
               },
             ),

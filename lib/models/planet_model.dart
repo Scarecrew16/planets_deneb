@@ -8,6 +8,8 @@ class Planet {
   final String nature;
   final String size;
   final String distance;
+  final String rotation;
+  final String translation;
 
   Planet(
       {this.id,
@@ -17,7 +19,9 @@ class Planet {
       required this.type,
       required this.nature,
       required this.size,
-      required this.distance});
+      required this.distance,
+      required this.rotation,
+      required this.translation});
 
   factory Planet.fromMap(Map<String, dynamic> json) => Planet(
       id: json['id'],
@@ -27,7 +31,9 @@ class Planet {
       type: json['type'],
       nature: json['nature'],
       size: json['size'],
-      distance: json['distance']);
+      distance: json['distance'],
+      rotation: json['rotation'],
+      translation: json['translation']);
 
   Map<String, dynamic> toMap() {
     return {
@@ -38,7 +44,9 @@ class Planet {
       'type': type,
       'nature': nature,
       'size': size,
-      'distance': distance
+      'distance': distance,
+      'rotation': rotation,
+      'translation': translation
     };
   }
 }
