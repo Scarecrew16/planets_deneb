@@ -1,72 +1,92 @@
-import 'package:deneb_v2/screens/add_planet_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:deneb_v2/models/starship_model.dart';
 import 'package:flutter/material.dart';
-import 'package:deneb_v2/PlanetCards/falcon.dart';
-import 'package:deneb_v2/PlanetCards/pillar.dart';
-import 'package:deneb_v2/screens/home_screen.dart';
+import 'package:deneb_v2/widgets/card_starship.dart';
 
-class ShipScreen extends StatefulWidget {
-  const ShipScreen({Key? key}) : super(key: key);
+import 'home_screen.dart';
 
-  @override
-  _ShipScreenState createState() => _ShipScreenState();
-}
+class ShipScreen extends StatelessWidget {
+  ShipScreen({Key? key}) : super(key: key);
 
-class _ShipScreenState extends State<ShipScreen> {
   @override
   Widget build(BuildContext context) {
+    final db = FirebaseFirestore.instance;
+    final doc1 = db.doc("/starships/s1");
+    final doc2 = db.doc("/starships/s2");
+
     return Scaffold(
-      appBar: AppBar(
+        appBar: AppBar(
+          title: const Text("Starships"),
+          backgroundColor: Color.fromRGBO(255, 183, 77, 1),
+          toolbarHeight: 75,
+          elevation: 0,
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_rounded,
-              color: Colors.white,
             ),
             iconSize: 30,
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen2()));
+                  MaterialPageRoute(builder: (context) => HomeScreen2()));
             },
           ),
-          title: const Text("Deneb"),
-          backgroundColor: Color.fromARGB(255, 94, 93, 93),
-          elevation: 0),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/back.jpg'),
-            fit: BoxFit.cover,
-          ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-                child: Text(
-                  'Starships',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 122, 119, 119),
-                    fontSize: 30,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              height: 485,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[FalconCard(), PillarCard()],
-              ),
-            ),
+        body: ListView(
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          children: [
+            //CountryCard(docs:doc1),
+            //CountryCard(docs:doc2),
+            //CountryCard(docs:doc3),
+            //CountryCard(docs:doc4),
+            //CountryCard(docs:doc5)
+            StreamBuilder(
+              stream: readData(),
+              builder: ((context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text(
+                      'Something went wrong! ${snapshot.connectionState}');
+                } else if (snapshot.hasData) {
+                  final starship = snapshot.data!;
+
+                  return ListView(
+                      //   children: starship.map(buildCountry).toList(),
+                      );
+                } else {
+                  return Center(child: CircularProgressIndicator());
+                }
+              }),
+            )
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
+
+Widget buildCountry(Starship starship) =>
+//CountryCard(image: starship.flag, name: starship.name, description: starship.description, continent: starship.continent, stores: starship.speed
+    ListTile(
+      title: Text(starship.name),
+    );
+//);
+
+Future create({required String name}) async {
+  final docStarship = FirebaseFirestore.instance.collection('starships').doc();
+
+  final starship = Starship(
+      id: docStarship.id,
+      name: name,
+      crew_size: 'crew_size',
+      description: 'description',
+      speed: 'sspeed',
+      image: 'image');
+
+  final json = starship.toMap();
+
+  await docStarship.set(json);
+}
+
+Stream<List<Starship>> readData() => FirebaseFirestore.instance
+    .collection('starships')
+    .snapshots()
+    .map((snapshots) =>
+        snapshots.docs.map((doc) => Starship.fromMap(doc.data())).toList());
