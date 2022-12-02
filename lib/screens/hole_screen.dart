@@ -1,6 +1,5 @@
 import 'package:deneb_v2/screens/add_planet_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:deneb_v2/PlanetCards/centaurus.dart';
 import 'package:deneb_v2/screens/home_screen.dart';
 
 class HoleScreen extends StatefulWidget {
@@ -60,7 +59,7 @@ class _HoleScreenState extends State<HoleScreen> {
               height: 485,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: <Widget>[CentaurusCard()],
+                children: <Widget>[],
               ),
             ),
           ],
